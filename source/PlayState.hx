@@ -2,6 +2,7 @@ package;
 
 import flixel.FlxG;
 import flixel.FlxState;
+import flixel.group.FlxGroup;
 import flixel.util.FlxSpriteUtil;
 
 class PlayState extends FlxState {
@@ -9,12 +10,16 @@ class PlayState extends FlxState {
 
 	private var _testObstacle : Obstacle;
 	private var _obstacles = new Array();
+	// TODO: Real poolsize
+	private var _obstacleGroup = new FlxTypedGroup< Obstacle >( 25 );
 
 	override public function create() : Void {
 		super.create();
 
 		_player = new Player( 280, 400 );
 		add( _player );
+
+		add( _obstacleGroup );
 
 		addObstacle();
 		addObstacle();
@@ -31,7 +36,7 @@ class PlayState extends FlxState {
 
 			// Delete obstacle if it's offscreen
 			if ( o.movement( playerSpeed )) {
-				remove( o );
+				_obstacleGroup.remove( o );
 				_obstacles.remove( o );
 				continue;
 			}
@@ -42,7 +47,7 @@ class PlayState extends FlxState {
 	private function addObstacle() : Void {
 		var x : Float = FlxG.random.int( 0, 400 );
 		var o = new Obstacle( x, 0 );
-		add( o );
+		_obstacleGroup.add( o );
 		_obstacles.push( o );
 	}
 }
