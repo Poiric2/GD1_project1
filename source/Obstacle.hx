@@ -9,8 +9,11 @@ class Obstacle extends FlxSprite {
         makeGraphic( 32, 32, FlxColor.BLUE );
     }
 
-    public function movement( playerSpeed : Float ) : Void {
+    public function movement( playerSpeed : Float ) : Bool {
         velocity.y = playerSpeed;
+
+        // TODO: Return true if offscreen
+        return false;
     }
 
     override public function update( elapsed : Float ) : Void {
