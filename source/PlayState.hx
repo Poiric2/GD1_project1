@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxState;
 import flixel.util.FlxSpriteUtil;
 
@@ -15,9 +16,9 @@ class PlayState extends FlxState {
 		_player = new Player( 280, 400 );
 		add( _player );
 
-		_testObstacle = new Obstacle( 0, 0 );
-		add( _testObstacle );
-		_obstacles.push( _testObstacle );
+		addObstacle();
+		addObstacle();
+		addObstacle();
 	}
 
 	override public function update( elapsed : Float ) : Void	{
@@ -36,5 +37,12 @@ class PlayState extends FlxState {
 			}
 			o.update( elapsed );
 		}
+	}
+
+	private function addObstacle() : Void {
+		var x : Float = FlxG.random.int( 0, 400 );
+		var o = new Obstacle( x, 0 );
+		add( o );
+		_obstacles.push( o );
 	}
 }

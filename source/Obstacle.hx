@@ -4,6 +4,8 @@ import flixel.FlxSprite;
 import flixel.util.FlxColor;
 
 class Obstacle extends FlxSprite {
+    private var _distanceScalingFactor : Float;
+
     public function new( ?x : Float = 0, ?y : Float = 0 ) {
         super( x, y );
         makeGraphic( 32, 32, FlxColor.BLUE );
@@ -17,6 +19,8 @@ class Obstacle extends FlxSprite {
     }
 
     override public function update( elapsed : Float ) : Void {
+
+        // TODO: Change sprite scale based on distance from horizon
 
         super.update( elapsed );
     }
