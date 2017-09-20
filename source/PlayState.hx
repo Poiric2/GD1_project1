@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxState;
 import flixel.group.FlxGroup;
 import flixel.util.FlxSpriteUtil;
@@ -42,6 +43,8 @@ class PlayState extends FlxState {
 			}
 			o.update( elapsed );
 		}
+
+		FlxG.overlap( _player, _obstacleGroup, obstacleCollision );
 	}
 
 	private function addObstacle() : Void {
@@ -49,5 +52,11 @@ class PlayState extends FlxState {
 		var o = new Obstacle( x, 0 );
 		_obstacleGroup.add( o );
 		_obstacles.push( o );
+	}
+
+	private function obstacleCollision( first : FlxObject, second : FlxObject ) : Void {
+
+		// DEBUG: Kill the player when they hit an obstacle
+		remove( _player );
 	}
 }
