@@ -11,8 +11,12 @@ class PlayState extends FlxState {
 
 	private var _testObstacle : Obstacle;
 	private var _obstacles = new Array();
+
 	// TODO: Real poolsize
 	private var _obstacleGroup = new FlxTypedGroup< Obstacle >( 25 );
+
+	private var _obstacleInterval : Float = 2;
+	private var _obstacleTimer : Float;
 
 	override public function create() : Void {
 		super.create();
@@ -22,17 +26,23 @@ class PlayState extends FlxState {
 
 		add( _obstacleGroup );
 
-		addObstacle();
-		addObstacle();
-		addObstacle();
+		_obstacleTimer = _obstacleInterval;
 	}
 
-	override public function update( elapsed : Float ) : Void	{
+	override public function update( elapsed : Float ) : Void {
 		super.update( elapsed );
 
 		var playerSpeed = _player.movement();
 		_player.update( elapsed );
 
+		// Spawn obstacles every interval
+		_obstacleTimer -= FlxG.elapsed;
+		if ( _obstacleTimer <= 0 ) {
+			addObstacle();
+			_obstacleTimer = _obstacleInterval;
+		}
+
+		// Update existing obstacles
 		for ( o in _obstacles ) {
 
 			// Delete obstacle if it's offscreen
