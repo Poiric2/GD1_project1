@@ -121,6 +121,9 @@ class PlayState extends FlxState {
 		_bunnySize -= .3;
 		_player.scale.set(_bunnySize, _bunnySize);
 		_player.updateHitbox();
+		var b : SmolBunny = new SmolBunny( _player.x, _player.y + _player.height );
+		_bunnyGroup.add( b );
+		_bunnies.push( b );
 		
 		if (_bunnySize <= 0){
 			remove( _player );
