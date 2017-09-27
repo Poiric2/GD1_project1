@@ -15,4 +15,11 @@ class Background extends FlxSprite {
 
         super.update( elpaso );
     }
+	
+	public function movement( playerSpeed : Float ):Void
+	{
+		var newRate:Float = playerSpeed / 30;
+		var newInt:Int = Std.int(newRate);
+		animation.getByName("go").frameRate = newInt;
+	}
 }

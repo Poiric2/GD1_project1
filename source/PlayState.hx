@@ -77,6 +77,8 @@ class PlayState extends FlxState {
 		_background.update( elapsed );
 
 		var playerSpeed = _player.movement();
+		
+		_background.movement( playerSpeed );
 		_player.update( elapsed );
 
 		// Spawn obstacles every interval
