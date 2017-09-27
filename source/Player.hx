@@ -34,7 +34,12 @@ class Player extends FlxSprite {
 	}
 
 	override public function update( elapsed : Float ) : Void {
-		
+		if ( x < 0 ) {
+			x = 0;
+		} else if ( x + width > FlxG.width ) {
+			x = FlxG.width - width;
+		}
+
 		super.update( elapsed );
 	}
 	
