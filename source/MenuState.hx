@@ -3,6 +3,7 @@ package;
 import flixel.FlxState;
 import flixel.FlxG;
 import flixel.ui.FlxButton;
+import flixel.system.FlxSound;
 
 class MenuState extends FlxState
 {
@@ -11,11 +12,12 @@ class MenuState extends FlxState
 		super.create();
 		
 		var playButton:FlxButton = new FlxButton(50, 50, "Play", goToPlay);
-		var cutsceneButton:FlxButton = new FlxButton(50, 75, "Test cutscene", goToCutscene);
 		var creditButton:FlxButton = new FlxButton(50, 100, "Credits", goToCredits);
 		
 		add(playButton);
 		add(creditButton);
+		FlxG.sound.play("assets/music/menuSong.ogg");
+
 	}
 
 	override public function update(elapsed:Float):Void
@@ -25,7 +27,7 @@ class MenuState extends FlxState
 	
 	function goToPlay():Void
 	{
-		FlxG.switchState(new PlayState());
+		FlxG.switchState(new CutsceneState());
 	}
 	
 	function goToCredits():Void
@@ -33,8 +35,4 @@ class MenuState extends FlxState
 		FlxG.switchState(new CreditState());
 	}
 	
-	function goToCutscene():Void
-	{
-		FlxG.switchState(new CutsceneState());
-	}
 }
