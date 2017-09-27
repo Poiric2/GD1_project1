@@ -14,7 +14,8 @@ class MenuState extends FlxState
 	 
 		add(back);
 		
-		var playButton:FlxButton = new FlxButton(200, 450, "Play", goToPlay);		
+		var playButton:FlxButton = new FlxButton(110, 450, "", goToPlay);
+		playButton.loadGraphic("assets/images/start.png");
 	
 		
 		add(playButton);
