@@ -7,6 +7,7 @@ import flixel.group.FlxGroup;
 import flixel.util.FlxSpriteUtil;
 
 class PlayState extends FlxState {
+	private var _background : Background;
 	private var _player : Player;
 
 	private var _testObstacle : Obstacle;
@@ -28,6 +29,9 @@ class PlayState extends FlxState {
 	override public function create() : Void {
 		super.create();
 
+		_background = new Background();
+		add( _background );
+
 		_player = new Player( 280, 400 );
 		add( _player );
 		// _player.scale.set(.2, .2);
@@ -42,6 +46,8 @@ class PlayState extends FlxState {
 
 	override public function update( elapsed : Float ) : Void {
 		super.update( elapsed );
+
+		_background.update( elapsed );
 
 		var playerSpeed = _player.movement();
 		_player.update( elapsed );
