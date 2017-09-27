@@ -12,9 +12,9 @@ class Player extends FlxSprite {
 	public function new( ?x: Float = 0, ?y: Float = 0 ) {
 		super( x, y );
 		loadGraphic( "assets/images/DustBunnySheet.png", true, 95, 126 );
-		animation.add( "forward", [ 0, 1, 2 ], 4, true );
-		animation.add( "right", [ 3, 4, 5 ], 4, true );
-		animation.add( "left", [ 6, 7, 8 ], 4, true );
+		animation.add( "forward", [ 0, 1, 2 ], 6, true );
+		animation.add( "right", [ 3, 4, 5 ], 6, true );
+		animation.add( "left", [ 6, 7, 8 ], 6, true );
 		animation.play( "forward" );
 	}
 
@@ -29,12 +29,14 @@ class Player extends FlxSprite {
 			velocity.x = 0;
 			animation.play( "forward" );
 		}
-
+		_ySpeed = get_height();
 		return _ySpeed;
 	}
 
 	override public function update( elapsed : Float ) : Void {
-
+		
 		super.update( elapsed );
 	}
+	
+	
 }

@@ -23,6 +23,7 @@ class PlayState extends FlxState {
 	
 	private var _bunnyInterval : Float = 3;
 	private var _bunnyTimer : Float;
+	private var _bunnySize : Float = 1;
 
 	override public function create() : Void {
 		super.create();
@@ -74,7 +75,7 @@ class PlayState extends FlxState {
 		// Update existing bunnies
 		// XXX: This should totally be merged with the above as a helper
 		for ( b in _bunnies ) {
-
+			
 			// Delete obstacle if it's offscreen
 			if ( b.movement( playerSpeed )) {
 				_bunnyGroup.remove( b );
@@ -105,11 +106,43 @@ class PlayState extends FlxState {
 	private function obstacleCollision( first : FlxObject, second : FlxObject ) : Void {
 
 		// DEBUG: Kill the player when they hit an obstacle
-		remove( _player );
+		if (Type.getClassName(Type.getClass(second)) == "Obstacle"){
+			//remove( _player );
+			_obstacleGroup.remove(cast(second,Obstacle));
+			_obstacles.remove(cast(second,Obstacle));
+			
+		}
+		if (Type.getClassName(Type.getClass(first)) == "Obstacle"){
+			//remove( _player );
+			_obstacleGroup.remove(cast(first,Obstacle));
+			_obstacles.remove(cast(first,Obstacle));
+			
+		}
+		_bunnySize -= .3;
+		_player.scale.set(_bunnySize, _bunnySize);
+		_player.updateHitbox();
+		
+		if (_bunnySize <= 0){
+			remove( _player );
+		}
+		
 	}
 
 	private function bunnyCollision( first : FlxObject, second : FlxObject ) : Void {
 
 		// TODO: Absorb the bunny, increase size and speed of player
+		if (Type.getClassName(Type.getClass(second)) == "SmolBunny"){
+			//remove( _player );
+			_bunnyGroup.remove(cast(second,SmolBunny));
+			_bunnies.remove(cast(second,SmolBunny));
+			
+		}
+		if (Type.getClassName(Type.getClass(first)) == "SmolBunny"){
+			//remove( _player );
+			_bunnyGroup.remove(cast(first,SmolBunny));
+			_bunnies.remove(cast(first,SmolBunny));
+			
+		}
+		//remove( _bunnyGroup);
 	}
 }

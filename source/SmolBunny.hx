@@ -9,7 +9,7 @@ class SmolBunny extends FlxSprite {
         loadGraphic( "assets/images/DustBunnySheet.png", true, 95, 126 );
         scale.set( 0.5, 0.5 );
         updateHitbox();
-        animation.add( "forward", [ 0, 1, 2 ], 4, true );
+        animation.add( "forward", [ 0, 1, 2 ], 6, true );
         animation.play( "forward" );
     }
 
@@ -27,4 +27,8 @@ class SmolBunny extends FlxSprite {
 
 		super.update( elapsed );
 	}
+	
+	//public function collected() : Void {
+	//	remove(this);
+	//}
 }
