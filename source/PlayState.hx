@@ -23,6 +23,10 @@ class PlayState extends FlxState {
 
 		_player = new Player( 280, 400 );
 		add( _player );
+		_player.scale.set(.2, .2);
+		_player.updateHitbox();
+		//_player.width = .2 * 300;
+		//_player.height = .2 * 300;
 
 		add( _obstacleGroup );
 
