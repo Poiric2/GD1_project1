@@ -24,6 +24,7 @@ class PlayState extends FlxState {
 	
 	private var _invulnFrames : Float = .5;
 	private var _invulnTimer : Float;
+	private var _canHit : Bool = true;
 	
 	private var _bunnyInterval : Float = 3;
 	private var _bunnyTimer : Float;
@@ -45,6 +46,7 @@ class PlayState extends FlxState {
 
 		_obstacleTimer = _obstacleInterval;
 		_bunnyTimer = _bunnyInterval;
+		_invulnTimer = _invulnFrames;
 	}
 
 	override public function update( elapsed : Float ) : Void {
