@@ -146,6 +146,9 @@ class PlayState extends FlxState {
 			_bunnies.remove(cast(first,SmolBunny));
 			
 		}
-		//remove( _bunnyGroup);
+
+		_bunnySize += .2;
+		_player.scale.set(_bunnySize, _bunnySize);
+		_player.updateHitbox();
 	}
 }
