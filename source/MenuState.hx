@@ -11,6 +11,7 @@ class MenuState extends FlxState
 		super.create();
 		
 		var playButton:FlxButton = new FlxButton(50, 50, "Play", goToPlay);
+		var cutsceneButton:FlxButton = new FlxButton(50, 75, "Test cutscene", goToCutscene);
 		var creditButton:FlxButton = new FlxButton(50, 100, "Credits", goToCredits);
 		
 		add(playButton);
@@ -30,5 +31,10 @@ class MenuState extends FlxState
 	function goToCredits():Void
 	{
 		FlxG.switchState(new CreditState());
+	}
+	
+	function goToCutscene():Void
+	{
+		FlxG.switchState(new CutsceneState());
 	}
 }

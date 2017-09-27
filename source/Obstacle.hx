@@ -1,5 +1,6 @@
 package;
 
+import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 
@@ -8,13 +9,16 @@ class Obstacle extends FlxSprite {
 
 	public function new( ?x : Float = 0, ?y : Float = 0 ) {
 		super( x, y );
-		makeGraphic( 32, 32, FlxColor.BLUE );
+		loadGraphic( "assets/images/ButtonObstacle.png", false );
 	}
 
 	public function movement( playerSpeed : Float ) : Bool {
 		velocity.y = playerSpeed;
 
-		// TODO: Return true if offscreen
+		// Return true if offscreen
+		if ( y > FlxG.height ) {
+			return true;
+		}
 		return false;
 	}
 
