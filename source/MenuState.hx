@@ -10,13 +10,16 @@ class MenuState extends FlxState
 	override public function create():Void
 	{
 		super.create();
+		var back = new MenuSprite( 0, 0);
+	 
+		add(back);
 		
-		var playButton:FlxButton = new FlxButton(50, 50, "Play", goToPlay);
-		var creditButton:FlxButton = new FlxButton(50, 100, "Credits", goToCredits);
+		var playButton:FlxButton = new FlxButton(200, 450, "Play", goToPlay);		
+	
 		
 		add(playButton);
-		add(creditButton);
-		FlxG.sound.play("assets/music/menuSong.ogg");
+		
+		//FlxG.sound.play("assets/music/menuSong.ogg");
 
 	}
 
@@ -30,9 +33,13 @@ class MenuState extends FlxState
 		FlxG.switchState(new CutsceneState());
 	}
 	
-	function goToCredits():Void
+	function winning():Void
 	{
-		FlxG.switchState(new CreditState());
+		FlxG.switchState(new WinnerState());
 	}
 	
+	function gameOver() : Void
+	{
+		FlxG.switchState(new GameOverState());
+	}
 }
