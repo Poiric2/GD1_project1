@@ -32,7 +32,7 @@ class  Cutscene extends FlxSprite
 		images.push(image);
 		image = Assets.getBitmapData("assets/images/f03.png");
 		images.push(image);
-		image = Assets.getBitmapData("assets/images/005.png");
+		image = Assets.getBitmapData("assets/images/f04.png");
 		images.push(image);		
         
 		loadGraphic(images[loc], true, 480, 640);
