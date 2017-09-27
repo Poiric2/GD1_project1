@@ -14,15 +14,11 @@ class CutsceneState extends FlxState {
 
 
 	private var _sceneInterval : Float = 0;
-	private var _sceneTimer : Float;
-	
+	private var _sceneTimer : Float;	
 	private var count:Int = 0;
 	private var _backGroup = new FlxTypedGroup< Cutscene >( 5 );
 	var cutScene = new Array();
-	
-	var times = [1, 1, 2, 1, 1];
-	
-	private var background:Cutscene;
+	var times = [1, 1, 2, 1, 1];	
 	
 	override public function create() : Void {
 		super.create();
@@ -31,7 +27,6 @@ class CutsceneState extends FlxState {
 		add( _backGroup);
 		
 		_sceneTimer = times[count];
-		
 		
 	}
 
