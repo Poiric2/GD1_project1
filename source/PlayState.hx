@@ -22,6 +22,9 @@ class PlayState extends FlxState {
 	private var _obstacleInterval : Float = 2;
 	private var _obstacleTimer : Float;
 	
+	private var _invulnFrames : Float = .5;
+	private var _invulnTimer : Float;
+	
 	private var _bunnyInterval : Float = 3;
 	private var _bunnyTimer : Float;
 	private var _bunnySize : Float = 1;
